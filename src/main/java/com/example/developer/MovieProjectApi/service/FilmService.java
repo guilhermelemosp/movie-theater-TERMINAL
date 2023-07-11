@@ -6,10 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.developer.MovieProjectApi.model.Film;
+import com.example.developer.MovieProjectApi.model.User;
 import com.example.developer.MovieProjectApi.repository.FilmRepo;
+// import com.example.developer.MovieProjectApi.film.utils.FilmUtils;
 
 @Service
 public class FilmService {
+
+        User currentUser = new User();
+        // private FilmUtils filmRules;
 
         @Autowired
         private FilmRepo filmRepo;
@@ -62,7 +67,16 @@ public class FilmService {
                 filmRepo.deleteById(id);
                 return "Filme removido com sucesso!" + id;
         }
-
+           public void setMoviesByAge(){ //FilmService.java
+                List<Film> films = this.getAllFilms();
+                int userAge = currentUser.getAge();
+                for (Film film : films) {
+                if(film.getMinimumAge() <= userAge){
+                        System.out.println(film.getTitle());
+                }
+                
+                }
+        }
 }
 
 

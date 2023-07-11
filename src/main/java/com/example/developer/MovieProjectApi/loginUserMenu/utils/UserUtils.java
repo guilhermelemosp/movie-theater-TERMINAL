@@ -1,12 +1,26 @@
-package com.example.CLI.utils;
+package com.example.developer.MovieProjectApi.loginUserMenu.utils;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-
+import java.util.List;
 import org.springframework.stereotype.Component;
+import com.example.developer.MovieProjectApi.model.User;
+import com.example.developer.MovieProjectApi.service.UserService;
 
 @Component
-public class UserRules {
+public class UserUtils {
+
+    private UserService userService;
+    private User currentUser;
+
+    public UserUtils(UserService userService) {
+        this.userService = userService;
+    }
+
+    public void setCurrentUser() {
+        currentUser = UserService.getCurrentUser();
+    }
+
 
     public String encryptPassword(String password) {
         try {
@@ -37,5 +51,29 @@ public class UserRules {
             e.printStackTrace();
             return null;
         }
+    }
+
+    public boolean authenticateUser(String username, String password) {//UserRules.java
+        List<User> users = userService.getAllUsers();
+        for (User user : users) {
+            if (user.getUsername().equals(username)) {
+                String encryptedPassword = user.getPassword();
+                String enteredPasswordEncrypted = encryptPassword(password);
+                if (encryptedPassword.equals(enteredPasswordEncrypted)) {
+                    currentUser = user;
+                    return true;                
+                }
+            }
+        }
+        return false;
+    }
+
+
+    public User getCurrentUser() {
+        return currentUser;
+    }
+
+    public void setCurrentUser(User currentUser) {
+        this.currentUser = currentUser;
     }
 }

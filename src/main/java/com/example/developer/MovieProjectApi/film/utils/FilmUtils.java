@@ -1,8 +1,9 @@
-package com.example.CLI.utils;
+package com.example.developer.MovieProjectApi.film.utils;
 
 import java.util.List;
 import java.util.Scanner;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.example.developer.MovieProjectApi.model.Film;
@@ -12,16 +13,21 @@ import com.example.developer.MovieProjectApi.service.FilmService;
 // import com.fasterxml.jackson.databind.SerializationFeature;
 
 @Component
-public class FilmRules {
+public class FilmUtils {
+    
+   @Autowired
+    public FilmUtils(FilmService filmService) {
+        this.filmService = filmService;
+    }
+
+
     String gender[] = {"Ação", "Aventura", "Comédia", "Drama", "Fantasia", "Ficção científica", "Musical", "Romance", "Suspense", "Terror"};
     String tecnologyApplied[] = {"2D", "3D", "4D", "IMAX", "IMAX 3D", "Dolby Atmos", "Dolby Vision", "D-BOX", "4DX", "ScreenX"};
     int minimumAge[] = {0, 10, 12, 14, 16, 18};
     int availableSeats = 100;
     int value[] = {10, 15, 20, 25, 30, 35, 40, 45, 50};
     
-    public FilmRules(FilmService filmService) {
-        this.filmService = filmService;
-    }
+   
     private FilmService filmService;
 
     public void filmList() {

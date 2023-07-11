@@ -10,13 +10,15 @@ import com.example.developer.MovieProjectApi.repository.UserRepo;
 
 @Service
 public class UserService {
-
-    @Autowired    
-    private UserRepo userRepo;
+        private static User currentUser;
 
 
-     public List<User> getAllUsers() {
-                return userRepo.findAll();
+        @Autowired    
+        private UserRepo userRepo;
+
+
+        public List<User> getAllUsers() {
+                        return userRepo.findAll();
         }
 
         public User getUserById(Long id) {
@@ -47,15 +49,21 @@ public class UserService {
                         existingUser.setRole(user.getRole());
                         existingUser.setAge(user.getAge());
                         return userRepo.save(existingUser);
-                 
+                
                 }
                 return null;
         }
         
 
-         public String deleteUser(Long id) {
+        public String deleteUser(Long id) {
                 userRepo.deleteById(id);
                 return "Removido com sucesso!" + id;
         }
+
+        public static User getCurrentUser() { //userService.java
+        return currentUser;
+        }
+
+        
 }
 

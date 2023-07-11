@@ -7,13 +7,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 
-import com.example.CLI.StructureCLI;
-
 @SpringBootApplication
 @ComponentScan({"com.example.CLI", "com.example.developer.MovieProjectApi"})
 public class MovieProjectApiApplication {
 	@Autowired
-	private StructureCLI structureCLI;
+	// private StructureCLI structureCLI;
 
 
 	public static void main(String[] args) {

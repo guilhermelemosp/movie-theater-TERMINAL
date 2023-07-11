@@ -17,16 +17,12 @@ public class TicketsBoughtByUser {
     @JoinColumn(name = "movie_id")
     private Film film;
 
-    @Column(name = "tickets_quantity")
-    private int ticketsQuantity;
-
     public TicketsBoughtByUser() {
     }
 
-    public TicketsBoughtByUser(User user, Film film, int ticketsQuantity) {
+    public TicketsBoughtByUser(User user, Film film) {
         this.user = user;
         this.film = film;
-        this.ticketsQuantity = ticketsQuantity;
     }
 
     public Long getId() {
@@ -50,13 +46,5 @@ public class TicketsBoughtByUser {
 
     public void setFilm(Film film) {
         this.film = film;
-    }
-
-    public int getTicketsQuantity() {
-        return ticketsQuantity;
-    }
-
-    public void setTicketsQuantity(int ticketsQuantity) {
-        this.ticketsQuantity = ticketsQuantity;
     }
 }

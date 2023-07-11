@@ -30,7 +30,7 @@ A sala de cinema possui 100 poltronas enumeradas onde existe um ingresso para ca
 Usuários do tipo (funcionário) poderão
 	- cadastrar novos filmes no sistema
 	- excluir filmes do cartaz
-		• um filme só pode ser excluído caso nenhum ingresso tenha sido vendido -> ESTRUTURA FEITA, FALTA DEIXAR AUTOMATIZADO A QUANTIDADE DE INGRESSOS VENDIDOS
+		• um filme só pode ser excluído caso nenhum ingresso tenha sido vendido
 	- listas os filmes em cartaz
 	- sair para a tela de login
 
@@ -38,7 +38,7 @@ Usuários do tipo (cliente) poderão:
 	- comprar ingressos no sistema
 	- listas os filmes em cartaz
 		• a listagem deve retornar somente os filme de acordo com a classificação indicativa especificada
-	- visualizar os ingressos que comprou -> FAZER
+	- visualizar os ingressos que comprou
 	- sair para a tela de login
 
 Deve existir um sistema de login
